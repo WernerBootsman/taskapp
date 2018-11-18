@@ -16,6 +16,11 @@ public class Task {
         taskName = name;
     }
 
+    /**Method that returns the name of a Task */
+    public String getTaskname(){
+        return taskName;
+    }
+
     /**This overrides the default toString method, to return the ID and name of a task, instead of the default Object and hashcode */
     @Override
     public String toString() {

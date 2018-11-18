@@ -1,6 +1,11 @@
 package taskapp;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +18,19 @@ public class TaskController {
     /**
      * create a list that contains Task objects.
      */
-    List<Task> TaskList = new ArrayList();
+    List<Task> taskList = new ArrayList<>();
 
     @RequestMapping(method = RequestMethod.POST)
-    public String Task(@RequestParam(value = "taskname") String taskname) {
-        TaskList.add(new Task(taskname));
-        return "OK";
+    public ResponseEntity task(@RequestParam(value = "taskname") String taskname) {
+        taskList.add(new Task(taskname));
+        return new ResponseEntity<>(taskname,HttpStatus.CREATED);
     }
 
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public String RetrieveTaskList() {
-        if (TaskList.isEmpty())
-            return "There are no tasks";
-        else return TaskList.toString();
+    public ResponseEntity task() {
+        if (taskList.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        else return new ResponseEntity<>(taskList, HttpStatus.OK);
     }
 }
