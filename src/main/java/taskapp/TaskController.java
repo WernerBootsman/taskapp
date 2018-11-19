@@ -21,9 +21,9 @@ public class TaskController {
     List<Task> taskList = new ArrayList<>();
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity task(@RequestParam(value = "taskname") String taskname) {
+    public ResponseEntity task(@RequestParam(value = "create") String taskname) {
         taskList.add(new Task(taskname));
-        return new ResponseEntity<>(taskname,HttpStatus.CREATED);
+        return new ResponseEntity<>(taskname, HttpStatus.CREATED);
     }
 
 
