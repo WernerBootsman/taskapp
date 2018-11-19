@@ -29,8 +29,6 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity task() {
-        if (taskList.isEmpty())
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        else return new ResponseEntity<>(taskList, HttpStatus.OK);
+        return new ResponseEntity<>(taskList, HttpStatus.OK);
     }
 }
