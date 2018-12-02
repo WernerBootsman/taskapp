@@ -13,6 +13,5 @@ public class TaskAppApplication {
 }
 
         /** TODO
-         - Create GET endpoint to retrieve a specific Task
         - Create endpoint to delete a specific Task
          */
